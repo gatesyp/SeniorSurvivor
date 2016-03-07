@@ -5,7 +5,7 @@
       <div class="navbar-header">
       </div>
       <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Home</a></li>
+        <li><a href="dashboard.php">Dashboard</a></li>
         <li><a href="orders.php">Orders</a></li>
         <li><a href="items.php">Items</a></li>
       </ul>
