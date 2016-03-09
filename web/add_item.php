@@ -30,6 +30,7 @@ require 'table.php';
       <?php include 'navbar.php';
         ?>
 <form action="item_handler.php" id="itemform" method="post">
+  <input style="display:none" type="text" name="type" value="add_item" />
  <div class="form-group">
    <label for="name">Item Name</label>
    <input type="text" class="form-control" name="name" id="name" placeholder="Name">

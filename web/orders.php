@@ -40,11 +40,7 @@ require 'table.php';
         ?>
       </div>
       <script>
-      $(document).ready(function() {
-        $("div.container table").delegate('tr', 'click', function() {
-          alert("Table Row Clicked");
-        });
-      });
+
 </script>
   </body>
 

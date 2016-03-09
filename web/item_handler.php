@@ -1,5 +1,6 @@
 <?php
 require 'dbconnect.php';
+if ($_POST['type'] == "add_item") {
 $sql = "INSERT INTO items (name, price, available) VALUES ('$_POST[name]', $_POST[price], TRUE)";
  if ($conn->query($sql) === TRUE) {
    echo "Item Added to database! <br>";
@@ -22,7 +23,7 @@ $sql = "INSERT INTO items (name, price, available) VALUES ('$_POST[name]', $_POS
    echo "Error: " . $sql . "<br>" . $conn->error;
  }
  $conn->close();
+ print ('<a class="btn btn-default" href="add_item.php" role="button">Add Another Item</a>');
+ print('<a class="btn btn-default" href="items.php" role="button">Return to Items</a>');
+ }
 ?>
-
-<a class="btn btn-default" href="add_item.php" role="button">Add Another Item</a>
-<a class="btn btn-default" href="items.php" role="button">Return to Items</a>
