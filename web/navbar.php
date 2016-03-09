@@ -1,6 +1,6 @@
-<div class="masthead">
+<div>
   <h3 class="text-muted">Stohio Senior Survivor</h3>
-  <nav class="navbar">
+  <nav class="navbar navbar-default">
     <div class="container-fluid">
       <div class="navbar-header">
       </div>
