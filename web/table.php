@@ -28,7 +28,7 @@ foreach($result as $row){
      else {
        $color = 0;
      }
-     print " <tr><td /><td /><td /><td /><td /><td /></tr> \n";
+     print " <tr><td /><td /><td /><td /><td /><td /><td /></tr> \n";
      print " <tr class=\"$colors[$color]\"> \n";
    }
    $last_room = $room;

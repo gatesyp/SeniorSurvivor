@@ -49,6 +49,12 @@ require 'table.php';
      </div>
            <span class="help-block">Any price between 0.00 and 99.99</span>
    </div>
+   <div class="checkbox">
+  <label>
+    <input name="available" id="available" type="checkbox">
+    Available
+  </label>
+</div>
  <button type="submit" class="btn btn-default">Submit</button>
 </form>
 <script>
@@ -64,6 +70,7 @@ $( document ).ready(function() {
   $available = $row['available'];
   echo "$('#name').val('$name');";
   echo "$('#price').val('$price');";
+  echo "$('#available').prop('checked', $available);";
 
   $sql = "SELECT * FROM aliases WHERE item_id = $id";
   $result = $conn->query($sql);

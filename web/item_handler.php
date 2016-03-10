@@ -25,8 +25,14 @@ $sql = "INSERT INTO items (name, price, available) VALUES ('$_POST[name]', $_POS
  $conn->close();
  print ('<a class="btn btn-default" href="add_item.php" role="button">Add Another Item</a>');
  print('<a class="btn btn-default" href="items.php" role="button">Return to Items</a>');
+/////////////////////////////////////////////////////////////
+
  } else if ($_POST['type'] == "edit_item") {
-   $sql = "UPDATE items SET name='$_POST[name]', price='$_POST[price]' WHERE id = $_POST[id]";
+   $available = "False";
+   if (isset($_POST['available'])) {
+     $available = "True";
+   }
+   $sql = "UPDATE items SET name='$_POST[name]', price='$_POST[price]', available='$available' WHERE id = $_POST[id]";
    if ($conn->query($sql) === TRUE) {
      echo "Item Updated in database! <br>";
 
