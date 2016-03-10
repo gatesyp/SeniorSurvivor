@@ -31,6 +31,7 @@ require 'table.php';
         ?>
 <form action="item_handler.php" id="itemform" method="post">
   <input style="display:none" type="text" name="type" value="edit_item" />
+  <input style="display:none" type="text" name="id" value="<?php print($_POST['id']); ?>" />
  <div class="form-group">
    <label for="name">Item Name</label>
    <input type="text" class="form-control" name="name" id="name" placeholder="Name">
