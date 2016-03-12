@@ -1,4 +1,7 @@
 # SeniorSurvivor
+Use intent.py for intent parsing
+<br>
+twit-streaming holds twitter details
 ##TODO
 
 1. TwitterBot<br>
