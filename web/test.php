@@ -1,0 +1,4 @@
+<?php
+require 'dbconnect.php';
+
+?>
