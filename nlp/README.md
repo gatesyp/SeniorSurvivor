@@ -2,6 +2,9 @@
 Use intent.py for intent parsing
 <br>
 twit-streaming holds twitter details
+##NOTES
+sudo pip install pyee
+
 ##TODO
 
 1. TwitterBot<br>
