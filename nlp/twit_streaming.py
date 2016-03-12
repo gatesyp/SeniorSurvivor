@@ -1,5 +1,15 @@
 import tweepy
 import intent
+from adapt.intent import IntentBuilder
+from adapt.engine import IntentDeterminationEngine
+
+
+import build_engine
+
+engine = IntentDeterminationEngine()
+
+engine = intent.build_engine(engine)
+
 
 
 consumer_key = "uEiVjyO98GwtHeV84vnxFb8YI"
@@ -16,8 +26,11 @@ api = tweepy.API(auth)
 
 # override tweepy.StreamListener to add logic to on_status
 class StreamListener(tweepy.StreamListener):
+    global engine
 
     def on_status(self, status):
+        
+        intent.get_intent(engine, status.text)
         print(status.text)
 
     def on_error(self, status_code):
