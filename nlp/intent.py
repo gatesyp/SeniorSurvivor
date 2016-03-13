@@ -1,16 +1,28 @@
 import json
+import pprint
 import sys
-import MySQLdb
-import db_connect
 
+import MySQLdb
 
 from adapt.intent import IntentBuilder
 from adapt.engine import IntentDeterminationEngine
 
-cur = db_connect.connect()
 engine = IntentDeterminationEngine()
 
+db = MySQLdb.connect(host="localhost",user="root", passwd="admin", db="seniorsurvivor")
+cur = db.cursor()
+
+def get_price(item, quantity):
+	global cur
+	sql = "SELECT price FROM items WHERE id = \"" + str(item) + "\" AND available = 1" 
+	cur.execute(sql)
+	price = None
+	for row in cur.fetchall():
+		price = float(row[0]) * float(quantity)
+	return str(price)
+
 def get_aliases(category):
+    global cur
     sql = "SELECT * from aliases WHERE category = " + category
     cur.execute(sql)
 
@@ -20,11 +32,13 @@ def get_aliases(category):
         alias_list.append(row[2])
     return alias_list
 
-def insert_order(item_id, quantity, name, location):
+def insert_order(order):
     global cur
-    sql = "insert into orders(item_id, quantity, name, room, completed) VALUES (" + item_id + ", " + quantity + ", " + name + ", " + location + " 0)"
+    global db
+    sql = "insert into orders(item_id, quantity, name, room, completed) VALUES (" + order['menu_item']+ ", " + order['quantity'] + ", \"" + order['name'] + "\", \"" + order['room'] + "\" , 0)"
+    print(sql)
     cur.execute(sql)
-    db_connect.commit_db()
+    db.commit()
 
 # distill the order to DB core components
 # -- change and teacher name to a room number
@@ -42,19 +56,20 @@ def normalize_order(order):
         sql = "SELECT * FROM items where id = \"" + str(row[0]) + "\""
         cur.execute(sql)
         for rows in cur.fetchall():
-            normalized['menu_item'] = rows[1]
-
-
+            normalized['menu_item'] = str(rows[0])
 
     if 'locations' in order.keys():
         print(order['locations'])
-        normalized['room'] = order['locations']
+        normalized['room'] = str(order['locations'])
     else:
         sql = "SELECT room_number FROM location WHERE teacher_name = \"" + order['teachers'] + "\"" 
         cur.execute(sql)
         for row in cur.fetchall():
-            normalized['room'] = row[0]
+        	normalized['room'] = str(row[0])
 
+    normalized['quantity'] = order['quantity']
+    return normalized
+	
 
 
 def build_engine(engine):
@@ -91,7 +106,7 @@ def get_intent(engine, tweet):
 
 engine = build_engine(engine)
 
-tweet = "for 1 chocolates, Stratton"
-order = get_intent(engine, tweet)
-normalize_order(order)
+#tweet = "for 1 chocolates, Stratton"
+#order = get_intent(engine, tweet)
+#normalize_order(order)
 # insert_order("1", "2", "2")
