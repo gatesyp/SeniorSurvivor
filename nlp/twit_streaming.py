@@ -4,7 +4,7 @@ from adapt.intent import IntentBuilder
 from adapt.engine import IntentDeterminationEngine
 
 
-import build_engine
+import build_engine, queries
 
 engine = IntentDeterminationEngine()
 
@@ -43,4 +43,3 @@ myStream = tweepy.Stream(auth = api.auth, listener=myStreamListener)
 
 
 myStream.userstream(encoding='utf8')
-
