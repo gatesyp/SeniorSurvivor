@@ -4,10 +4,10 @@ import time
 from random import randint
 from random import random
 
-consumer_key = "y0UYGbK3J1kfYg2D7WccZjQIx"
-consumer_secret = "uBhHFe2DEbauPKWGzr3lFfgCw877LCEzeDEA6nIEtaEhW93YQU"
-access_token = "707342691470843904-JqZ1UekV2o9VgVVsXVLzhjChWdRjxU9"
-access_token_secret = "ilpLNUh3IBbvBMd1R6ZZQAdEM4TxRTnaNsC5LHMccalnL"
+consumer_key = "2E39YN2PgjgTscKjpU8JCPWkw"
+consumer_secret = "aiIo63Bs8LsglpYWfOWKwDyh4UNWABNd6Cg7b0CeGs7ZkEHDcT"
+access_token = "718226842579243012-y6TZ8wU5ZYgK3zfrXzvARKyPTaPWTaY"
+access_token_secret = "a6OnUSfMDAAd2bEsIzxarJCh7rb7DsjZioxKcmsK9SPie"
 
 
 # using OAuth to validate connection
